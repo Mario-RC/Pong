@@ -1,0 +1,42 @@
+#include <fstream>
+#include "Mundo.h"
+#include "glut.h"
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+#include <sys/types.h>
+#include <sys/stat.h>
+
+int mkfifo(const char *pathname, mode_t mode);
+
+int main()
+{
+	FILE *pongpipe;
+	char buffer[128];
+
+	//El usuario puede leer
+	if (mkfifo("PongPuntosFIFO", S_IRUSR)!=0) printf ("Hubo un problema al crear la pipe\n");
+
+	pongpipe=fopen("PongPuntosFIFO", "r"); //Lo abrimos como un fichero normal y corriente
+
+	//Con esta línea leemos hasta que se cierre la tubería por el otro
+	while (!feof(pongpipe)){
+	int n=0;
+
+	if (fgets(buffer, 128, pongpipe))	
+	char cad[100];
+	if(CMundo::getpuntos1()!=n){
+	sprintf(cad,"Jugador 1 marca 1 punto, lleva un total de %d puntos.\n",CMundo::getpuntos1());
+	n=CMundo::getpuntos1();
+	}
+	else
+	sprintf(cad,"Jugador 2 marca 1 punto, lleva un total de %d puntos.\n",CMundo::getpuntos2());
+	
+	printf ("RECIBIDO: %s", buffer);
+	}
+
+	//Cerramos la tubería por aquí también
+	fclose(pongpipe);
+}

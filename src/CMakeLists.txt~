@@ -1,0 +1,20 @@
+INCLUDE_DIRECTORIES("${PROJECT_INCLUDE_DIR}")
+
+SET(COMMON_SRCS 
+	
+	Esfera.cpp
+	Plano.cpp
+	Raqueta.cpp
+	Vector2D.cpp
+	Socket.cpp)
+	
+ADD_EXECUTABLE(cliente cliente.cpp MundoCliente.cpp ${COMMON_SRCS})
+ADD_EXECUTABLE(servidor servidor.cpp MundoServidor.cpp ${COMMON_SRCS})
+ADD_EXECUTABLE(Logger Logger.cpp)
+ADD_EXECUTABLE(Bot Bot.cpp)
+
+TARGET_LINK_LIBRARIES(cliente glut GL GLU)
+TARGET_LINK_LIBRARIES(servidor glut GL GLU)
+TARGET_LINK_LIBRARIES(Bot glut GL GLU)
+FIND_PACKAGE(Threads REQUIRED)
+TARGET_LINK_LIBRARIES(servidor ${CMAKE_THREAD_LIBS_INIT})

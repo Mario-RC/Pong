@@ -1,0 +1,22 @@
+#include <fstream>
+#include "Mundo.h"
+#include "glut.h"
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+void FIFO(){
+
+	char cad[100];
+	int n=0;
+
+	if(CMundo::getpuntos1()!=n){
+	sprintf(cad,"Jugador 1 marca 1 punto, lleva un total de %d puntos.\n",CMundo::getpuntos1());
+	n=CMundo::getpuntos1();
+	}
+	else
+	sprintf(cad,"Jugador 2 marca 1 punto, lleva un total de %d puntos.\n",CMundo::getpuntos2());
+}
+
+
