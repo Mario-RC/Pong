@@ -11,10 +11,10 @@ Create the directory called `build`. Enter and execute the following commands in
 The directory `src` will be created. Enter and execute the following commands in the terminal:
 ```
 ./logger
-./loggerFIFO
-./server
+./LoggerFIFO
+./servidor
 ./bot
-./customer
+./cliente
 ```
 
 Write a name and you're ready to play.
